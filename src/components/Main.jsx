@@ -1,13 +1,24 @@
-export default function Sidebar({ className }) {
-  return (
-    <div className={`flex flex-col   items-start pl-4  ${className}`}>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-white font-bold text-xl">YOUR PROJECTS</h1>
-        <p>Select a project or get started with a new one</p>
+import Button from "./Button";
+import TextArea from "./TextArea";
+import TextField from "./textfield";
 
-        <button className="text-white font-regular text-sm bg-gray-900 p-2 rounded-md flex gap-2">
-          Create new project
-        </button>
+export default function Main({ className, setShowStatus }) {
+  return (
+    <div className={`flex flex-col w-full items-start pl-4   ${className}`}>
+      <div className="flex justify-end gap-5 w-full ">
+        <Button
+          btnText="cancel"
+          btnHandler={() => setShowStatus((prev) => !prev)}
+        />
+        <Button
+          btnText="Save"
+          btnClassName="bg-black text-white py-1 px-4 rounded"
+        />
+      </div>
+      <div className="w-full flex flex-col gap-1">
+        <TextField inutType="text" />
+        <TextArea labelName="DESCRIPTION" />
+        <TextField inutType="date" labelName="Due Date" />
       </div>
     </div>
   );
